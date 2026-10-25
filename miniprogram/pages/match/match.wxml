@@ -1,0 +1,32 @@
+<view class="screen tab">
+  <view wx:if="{{loading}}" class="hint">正在找一条还没人处理的…</view>
+  <view wx:elif="{{error && !post}}" class="error">
+    <view>{{error}}</view>
+    <button class="btn line" bindtap="load">再试一次</button>
+  </view>
+  <block wx:elif="{{post}}">
+    <view class="chip">{{post.sceneText}}</view>
+    <view class="meta">{{post.author.nickname}} 的求助</view>
+    <view class="ask">{{post.ask}}</view>
+    <view wx:if="{{post.replyHint}}" class="hint">{{post.replyHint}}</view>
+    <chat-thread messages="{{post.messages}}" mark-last="{{true}}" />
+
+    <view class="label">如果是你，你会怎么回</view>
+    <textarea
+      class="field area"
+      maxlength="300"
+      cursor-spacing="140"
+      placeholder="写一句能直接发出去的"
+      value="{{content}}"
+      bindinput="onContent"
+    />
+    <view wx:if="{{error}}" class="error">{{error}}</view>
+    <button class="btn" disabled="{{submitting}}" bindtap="onSend">{{submitting ? '正在送出' : '送出这句'}}</button>
+    <button class="btn line" disabled="{{submitting}}" bindtap="onSkip">这题我不会，换一个</button>
+  </block>
+  <block wx:else>
+    <view class="h1">这会儿空着</view>
+    <view class="empty">没有待处理的帖子。别人还没把卡住的对话发出去。</view>
+    <button class="btn dark" bindtap="onCompose">先贴自己的</button>
+  </block>
+</view>

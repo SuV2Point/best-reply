@@ -1,0 +1,42 @@
+<view class="screen">
+  <view class="lede">把原话贴上来。最后一句会标成你卡住的地方。</view>
+
+  <view class="label">这是谁</view>
+  <input
+    class="field"
+    maxlength="40"
+    placeholder="前任、领导、相亲对象，可以不填"
+    value="{{scene}}"
+    bindinput="onScene"
+  />
+
+  <view class="label">对话 · {{messages.length}}/20</view>
+  <view class="pills">
+    <view class="pill {{role === 'other' ? 'on' : ''}}" data-role="other" bindtap="onRole">对方</view>
+    <view class="pill {{role === 'me' ? 'on' : ''}}" data-role="me" bindtap="onRole">我</view>
+  </view>
+  <textarea
+    class="field area"
+    maxlength="300"
+    cursor-spacing="120"
+    placeholder="原话贴在这里"
+    value="{{draft}}"
+    bindinput="onDraft"
+  />
+  <button class="btn line" bindtap="onAdd">加进对话</button>
+  <chat-thread messages="{{messages}}" editable="{{true}}" mark-last="{{true}}" bind:remove="onRemove" />
+
+  <view class="label">我卡在哪里</view>
+  <textarea
+    class="field area"
+    maxlength="120"
+    cursor-spacing="120"
+    placeholder="比如：不想答应，又怕显得很冷"
+    value="{{ask}}"
+    bindinput="onAsk"
+  />
+
+  <view wx:if="{{error}}" class="error">{{error}}</view>
+  <button class="btn" disabled="{{submitting}}" bindtap="onPublish">{{submitting ? '正在发出' : '发出去'}}</button>
+  <view class="hint">发出后，别人会随机刷到。你能看到每一条回复，觉得神的可以盖章。</view>
+</view>

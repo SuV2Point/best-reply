@@ -1,0 +1,21 @@
+<view class="screen tab">
+  <view class="h1">消息</view>
+  <view wx:if="{{loading}}" class="hint">正在看有没有新回复…</view>
+  <view wx:elif="{{error}}" class="error">
+    <view>{{error}}</view>
+    <button class="btn line" bindtap="load">再试一次</button>
+  </view>
+  <view wx:elif="{{notes.length === 0}}" class="empty">还没有消息。有人接话，或者你的回复被盖章，会出现在这里。</view>
+  <view
+    wx:for="{{notes}}"
+    wx:key="id"
+    class="card note {{item.read ? '' : 'unread'}}"
+    data-id="{{item.id}}"
+    data-post="{{item.postId}}"
+    bindtap="onOpen"
+  >
+    <view class="card-title">{{item.title}}</view>
+    <view class="reply-body">{{item.body}}</view>
+    <view class="meta">{{item.timeText}}{{item.read ? '' : ' · 未读'}}</view>
+  </view>
+</view>

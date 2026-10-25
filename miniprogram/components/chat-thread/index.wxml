@@ -1,0 +1,12 @@
+<view class="thread">
+  <view wx:for="{{messages}}" wx:key="index" class="row {{item.role}}">
+    <view class="who">
+      <text>{{item.role === 'me' ? '我' : '对方'}}</text>
+      <text wx:if="{{markLast && index === messages.length - 1}}" class="stuck">卡在这句</text>
+    </view>
+    <view class="bubble">
+      <text selectable>{{item.text}}</text>
+      <view wx:if="{{editable}}" class="remove" data-index="{{index}}" catchtap="onRemove">删除</view>
+    </view>
+  </view>
+</view>

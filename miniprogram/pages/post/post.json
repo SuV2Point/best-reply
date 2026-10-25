@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "求助",
+  "usingComponents": {
+    "chat-thread": "/components/chat-thread/index"
+  }
+}

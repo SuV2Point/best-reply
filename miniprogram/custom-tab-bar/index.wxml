@@ -1,0 +1,12 @@
+<view class="bar">
+  <view
+    wx:for="{{items}}"
+    wx:key="text"
+    class="item {{selected === index ? 'on' : ''}}"
+    data-index="{{index}}"
+    bindtap="onSwitch"
+  >
+    <text>{{item.text}}</text>
+    <view wx:if="{{index === 2 && unread > 0}}" class="badge">{{unread > 99 ? '99+' : unread}}</view>
+  </view>
+</view>
