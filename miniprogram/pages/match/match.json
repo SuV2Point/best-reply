@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "助攻",
+  "usingComponents": {
+    "chat-thread": "/components/chat-thread/index"
+  }
+}

@@ -1,0 +1,20 @@
+<view class="screen">
+  <view class="logo">助</view>
+  <view class="kicker">尬聊急救</view>
+  <view class="h1">神助攻</view>
+  <view class="lede">聊天卡住的时候，把那一段交给陌生人接一句。</view>
+
+  <view class="label">怎么称呼你</view>
+  <input
+    class="field"
+    type="nickname"
+    maxlength="16"
+    placeholder="起个昵称，别人会看到"
+    value="{{nickname}}"
+    bindinput="onNickname"
+  />
+
+  <view wx:if="{{error}}" class="error">{{error}}</view>
+  <button class="btn" disabled="{{submitting}}" bindtap="onEnter">{{submitting ? '正在进入' : '进入'}}</button>
+  <view class="hint">{{wechat ? '会使用微信登录。' : '现在是试用登录。想自己扮演两个人，进「我的」里换一个身份。'}}</view>
+</view>

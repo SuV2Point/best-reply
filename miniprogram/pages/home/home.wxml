@@ -1,0 +1,41 @@
+<view class="screen tab">
+  <view class="logo">助</view>
+  <view class="kicker">尬聊急救</view>
+  <view class="h1">神助攻</view>
+  <view class="lede">把你不敢回的那一段，交给刚好刷到的陌生人。</view>
+
+  <view class="action" hover-class="pressed" bindtap="onCompose">
+    <view class="action-title">我卡住了</view>
+    <view class="action-desc">贴上对话，等别人替你接一句</view>
+  </view>
+  <view class="action help" hover-class="pressed" bindtap="onMatch">
+    <view class="action-title">去接一句</view>
+    <view class="action-desc">{{waitingText}}</view>
+  </view>
+
+  <view class="section">我发出的</view>
+  <view wx:if="{{loading}}" class="hint">正在取你的求助…</view>
+  <view wx:elif="{{error}}" class="error">
+    <view>{{error}}</view>
+    <button class="btn line" bindtap="load">再试一次</button>
+  </view>
+  <view wx:elif="{{posts.length === 0}}" class="empty">还没有求助。哪句让你愣住了，就贴上来。</view>
+  <view wx:else>
+    <view
+      wx:for="{{posts}}"
+      wx:key="id"
+      class="card"
+      data-id="{{item.id}}"
+      bindtap="onOpen"
+    >
+      <view class="chip">{{item.sceneText}}</view>
+      <view class="card-title">{{item.ask}}</view>
+      <view class="meta">
+        <text>{{item.timeText}}</text>
+        <text> · {{item.replyCount}} 条回复</text>
+        <text wx:if="{{item.godAssistCount}}"> · {{item.godAssistCount}} 个神助攻</text>
+        <text wx:if="{{item.unreadReplyCount}}" class="fresh"> · {{item.unreadReplyCount}} 条新回复</text>
+      </view>
+    </view>
+  </view>
+</view>

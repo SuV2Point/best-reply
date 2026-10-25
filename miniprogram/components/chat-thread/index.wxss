@@ -1,0 +1,50 @@
+.row {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24rpx;
+}
+
+.row.me {
+  align-items: flex-end;
+}
+
+.row.other {
+  align-items: flex-start;
+}
+
+.who {
+  margin-bottom: 8rpx;
+  color: #8A7E72;
+  font-size: 22rpx;
+}
+
+.stuck {
+  margin-left: 12rpx;
+  color: #C23A2E;
+}
+
+.bubble {
+  max-width: 86%;
+  padding: 22rpx 24rpx;
+  border-radius: 22rpx;
+  font-size: 30rpx;
+  line-height: 1.55;
+  word-break: break-word;
+}
+
+.other .bubble {
+  background: #FFFDF9;
+  border: 2rpx solid #E6DCCA;
+  border-top-left-radius: 6rpx;
+}
+
+.me .bubble {
+  background: #E5F2EA;
+  border-top-right-radius: 6rpx;
+}
+
+.remove {
+  margin-top: 10rpx;
+  color: #A89888;
+  font-size: 22rpx;
+}

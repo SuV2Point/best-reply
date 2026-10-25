@@ -1,0 +1,34 @@
+{
+  "entryPagePath": "pages/login/login",
+  "pages": [
+    "pages/login/login",
+    "pages/home/home",
+    "pages/match/match",
+    "pages/inbox/inbox",
+    "pages/profile/profile",
+    "pages/compose/compose",
+    "pages/post/post"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#F3EEE6",
+    "navigationBarTitleText": "神助攻",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F3EEE6",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#8A7E72",
+    "selectedColor": "#C23A2E",
+    "backgroundColor": "#FBF7F1",
+    "list": [
+      { "pagePath": "pages/home/home", "text": "首页" },
+      { "pagePath": "pages/match/match", "text": "助攻" },
+      { "pagePath": "pages/inbox/inbox", "text": "消息" },
+      { "pagePath": "pages/profile/profile", "text": "我的" }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

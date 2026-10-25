@@ -1,0 +1,40 @@
+<view class="screen tab">
+  <view class="kicker">我的</view>
+  <view class="h1">{{me.nickname || '…'}}</view>
+
+  <view class="stats" wx:if="{{me.stats}}">
+    <view class="stat">
+      <view class="stat-num">{{me.stats.posts}}</view>
+      <view class="stat-label">求助</view>
+    </view>
+    <view class="stat">
+      <view class="stat-num">{{me.stats.replies}}</view>
+      <view class="stat-label">助攻</view>
+    </view>
+    <view class="stat">
+      <view class="stat-num">{{me.stats.godAssists}}</view>
+      <view class="stat-label">神助攻</view>
+    </view>
+  </view>
+
+  <view wx:if="{{error}}" class="error">{{error}}</view>
+  <button class="btn line" bindtap="onSwitch">换一个身份</button>
+
+  <view class="section">我接过的</view>
+  <view wx:if="{{loading}}" class="hint">正在整理…</view>
+  <view wx:elif="{{replies.length === 0}}" class="empty">还没接过。去助攻里领一题。</view>
+  <block wx:else>
+  <view
+    wx:for="{{replies}}"
+    wx:key="id"
+    class="card"
+    data-id="{{item.post.id}}"
+    bindtap="onOpen"
+  >
+    <view class="chip">{{item.sceneText}}</view>
+    <view wx:if="{{item.godAssist}}" class="meta fresh">被标成了神助攻</view>
+    <view class="card-title">{{item.content}}</view>
+    <view class="meta">原求助：{{item.post.ask}} · {{item.timeText}}</view>
+  </view>
+  </block>
+</view>

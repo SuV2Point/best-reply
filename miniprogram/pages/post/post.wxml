@@ -1,0 +1,38 @@
+<view class="screen">
+  <view wx:if="{{loading}}" class="hint">正在打开…</view>
+  <view wx:elif="{{error && !post}}" class="error">{{error}}</view>
+  <block wx:elif="{{post}}">
+    <view class="chip">{{post.sceneText}}</view>
+    <view class="ask">{{post.ask}}</view>
+    <view class="meta">{{post.author.nickname}} · {{post.timeText}}</view>
+    <view wx:if="{{post.status === 'closed'}}" class="banner">已经收起，不会再被匹配到。</view>
+    <chat-thread messages="{{post.messages}}" mark-last="{{true}}" />
+
+    <view class="section">大家接的</view>
+    <view wx:if="{{post.replies.length === 0}}" class="empty">
+      {{post.isAuthor ? '还没有人接。刷到的人会来给一句。' : '你还没接这句。'}}
+    </view>
+    <view wx:for="{{post.replies}}" wx:key="id" class="card reply {{item.godAssist ? 'stamped' : ''}}">
+      <view wx:if="{{item.godAssist}}" class="seal">神助攻</view>
+      <view class="meta">{{item.author.nickname}} · {{item.timeText}}</view>
+      <view class="reply-body">
+        <text selectable>{{item.content}}</text>
+      </view>
+      <button class="btn small line" data-content="{{item.content}}" catchtap="onCopy">复制这句</button>
+      <button
+        wx:if="{{post.isAuthor}}"
+        class="btn small {{item.godAssist ? 'ghost' : ''}}"
+        data-id="{{item.id}}"
+        data-on="{{item.godAssist ? 1 : 0}}"
+        catchtap="onStamp"
+      >{{item.godAssist ? '撤销神助攻' : '标为神助攻'}}</button>
+    </view>
+
+    <view wx:if="{{error}}" class="error">{{error}}</view>
+    <button
+      wx:if="{{post.isAuthor && post.status === 'open'}}"
+      class="btn line"
+      bindtap="onClose"
+    >收起，不再匹配</button>
+  </block>
+</view>
