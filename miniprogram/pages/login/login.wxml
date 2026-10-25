@@ -1,7 +1,7 @@
 <view class="screen">
   <view class="logo">助</view>
   <view class="kicker">尬聊急救</view>
-  <view class="h1">神助攻</view>
+  <view class="h1">best-reply</view>
   <view class="lede">聊天卡住的时候，把那一段交给陌生人接一句。</view>
 
   <view class="label">怎么称呼你</view>

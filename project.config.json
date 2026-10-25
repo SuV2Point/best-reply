@@ -1,7 +1,7 @@
 {
   "miniprogramRoot": "miniprogram/",
-  "projectname": "shenzhugong",
-  "description": "神助攻",
+  "projectname": "best-reply",
+  "description": "best-reply",
   "appid": "touristappid",
   "compileType": "miniprogram",
   "libVersion": "3.5.5",
