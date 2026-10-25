@@ -1,7 +1,7 @@
 <view class="screen tab">
   <view class="logo">助</view>
   <view class="kicker">尬聊急救</view>
-  <view class="h1">神助攻</view>
+  <view class="h1">best-reply</view>
   <view class="lede">把你不敢回的那一段，交给刚好刷到的陌生人。</view>
 
   <view class="action" hover-class="pressed" bindtap="onCompose">
